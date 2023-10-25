@@ -1,26 +1,23 @@
-#!/usr/bin/env python3
-import os
-#Limpiar
+#Custom clear command
+clearall () {
+	clear && printf '\e[3J'
+}
+#Run a Django project
+run(){
+	python3 manage.py runserver 
+}
 
+#Migrate database
+migrate(){
+	python3 manage.py migrate
+}
 
-def clear_screen():
-    os.system('clear')  # Para sistemas basados en Unix/Linux
-    # Si estás en un sistema Windows, puedes usar 'cls' en lugar de 'clear'
+#Make migrations
+migrations(){
+	python3 manage.py makemigrations
+}
 
-if __name__ == "__main__":
-    clear_screen()
-    print("¡Pantalla limpia!")
-
-#borrar db
-print('Borrando archivo db.sqlite3')
-rm db.sqlite3
-
-#crear migraciones
-print('creando migraciones')
-python3 manage.py makemigrations
-
-#aplicando migraciones
-print('aplicando migraciones')
-python3 manage.py migrate
-
-
+#Delete database sqlite3 Django project
+deletedb(){
+	rm db.sqlite3
+}
